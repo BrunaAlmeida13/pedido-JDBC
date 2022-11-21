@@ -1,8 +1,8 @@
 
 
-create database app;
+create database pedido;
 
-use app;
+use pedido;
 
 create table cliente(
 	codigo int not null primary key auto_increment,
