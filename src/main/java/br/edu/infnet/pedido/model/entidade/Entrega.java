@@ -12,14 +12,24 @@ public class Entrega {
      private StatusEnum status;
      private String endereco;
      private Cliente cliente;
+     private Entregador entregador;
 
-     public Entrega(Long codigo, LocalDateTime dataHoraEntregaInicio, LocalDateTime dataHoraEntregaFim, StatusEnum status, Cliente cliente, String endereco) {
+     public Entrega(Long codigo, LocalDateTime dataHoraEntregaInicio, LocalDateTime dataHoraEntregaFim, StatusEnum status, Cliente cliente, String endereco, Entregador entregador) {
           this.codigo = codigo;
           this.dataHoraEntregaInicio = dataHoraEntregaInicio;
           this.dataHoraEntregaFim = dataHoraEntregaFim;
           this.status = status;
           this.cliente = cliente;
           this.endereco = endereco;
+          this.entregador = entregador;
+     }
+
+     public Entregador getEntregador() {
+          return entregador;
+     }
+
+     public void setEntregador(Entregador entregador) {
+          this.entregador = entregador;
      }
 
      public LocalDateTime getDataHoraEntregaFim() {

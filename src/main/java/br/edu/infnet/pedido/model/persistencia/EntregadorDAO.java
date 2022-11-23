@@ -52,7 +52,7 @@ public class EntregadorDAO extends JdbcDAO<Entregador> {
 	}
 
 	@Override
-	public Cliente obter(Long codigo) {
+	public Entregador obter(Long codigo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
