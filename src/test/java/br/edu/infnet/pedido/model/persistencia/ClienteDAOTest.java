@@ -57,7 +57,7 @@ public class ClienteDAOTest {
 
 	@Test
 	public void testObterCliente() {
-		IDAO clienteDAO = new ClienteDAO();
+		ClienteDAO clienteDAO = new ClienteDAO();
 		List<Cliente> lista = clienteDAO.listarTodos();
 		Cliente cliente = clienteDAO.obter(lista.get(0).getCodigo());
 		Assert.assertNotNull(cliente);;
