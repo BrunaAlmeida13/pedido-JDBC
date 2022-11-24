@@ -9,5 +9,8 @@
         <module name="pedido" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="pedido" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EntregaDAO extends JdbcDAO<Entrega> {
@@ -35,10 +36,14 @@ public class EntregaDAO extends JdbcDAO<Entrega> {
     public Boolean atualizar(Entrega entrega) {
         try{
             pstm = con.prepareStatement("update entrega set data_hora_inicio = ?, data_hora_fim = ?, status = ?, endereco = ?, cd_cliente = ?, cd_entregador = ?" +
-                    "where cd_entrega = ?");
+                    " where cd_entrega = ?");
 
-            pstm.setTimestamp(1, Timestamp.valueOf(entrega.getDataHoraEntregaInicio()));
-            pstm.setTimestamp(2, Timestamp.valueOf(entrega.getDataHoraEntregaFim()));
+            if (entrega.getDataHoraEntregaInicio() != null){
+                pstm.setTimestamp(1, Timestamp.valueOf(entrega.getDataHoraEntregaInicio()));
+            }
+            if(entrega.getDataHoraEntregaFim() != null){
+                pstm.setTimestamp(2, Timestamp.valueOf(entrega.getDataHoraEntregaFim()));
+            }
             pstm.setString(3, entrega.getStatus().toString());
             pstm.setString(4, entrega.getEndereco());
             pstm.setLong(5, entrega.getCliente().getCodigo());
@@ -71,11 +76,11 @@ public class EntregaDAO extends JdbcDAO<Entrega> {
         try{
             String sql = "select a.cd_entrega, " +
                          "a.data_hora_inicio, a.data_hora_fim, a.status, a.endereco, " +
-                         "a.cd_cliente, a.cd_entregador, b.credencial, b.nome, " +
-                         "b.tipoVeiculo, b.carteira, c.cliente, c.nome " +
+                         "a.cd_cliente, a.cd_entregador, b.codigo, b.nome, " +
+                         "b.tipoVeiculo, b.carteira, c.codigo, c.nome " +
                          "from entrega a " +
                          "inner join entregador b on a.cd_entregador = b.codigo " +
-                         "inner join cliente c on a.cd_cliente = c.cliente" +
+                         "inner join cliente c on a.cd_cliente = c.codigo " +
                          "where cd_entrega = ?";
 
             pstm = con.prepareStatement(sql);
@@ -86,12 +91,19 @@ public class EntregaDAO extends JdbcDAO<Entrega> {
                 TipoVeiculoEnum tipoVeiculoEnum = TipoVeiculoEnum.valueOf(rs.getString("b.tipoVeiculo"));
                 CarteiraEnum carteiraEnum = CarteiraEnum.valueOf(rs.getString("b.carteira"));
                 StatusEnum statusEnum = StatusEnum.valueOf(rs.getString("a.status"));
-                LocalDateTime dthrInicio = rs.getTimestamp("a.data_hora_inicio").toLocalDateTime();
-                LocalDateTime dthrFim = rs.getTimestamp("a.data_hora_fim").toLocalDateTime();
+                LocalDateTime dthrInicio = null;
+                LocalDateTime dthrFim = null;
+
+                if(rs.getTimestamp("a.data_hora_inicio") != null){
+                    dthrInicio = rs.getTimestamp("a.data_hora_inicio").toLocalDateTime();
+                }
+                if(rs.getTimestamp("a.data_hora_fim") != null){
+                    dthrFim = rs.getTimestamp("a.data_hora_fim").toLocalDateTime();
+                }
 
                 Cliente objCliente = new Cliente(rs.getString("c.nome"), rs.getLong("c.codigo"));
 
-                Entregador objEntregador = new Entregador(rs.getInt("b.credencial"),rs.getString("b.nome"),
+                Entregador objEntregador = new Entregador(rs.getInt("b.codigo"),rs.getString("b.nome"),
                                             tipoVeiculoEnum, carteiraEnum);
 
                 Entrega objEntrega = new Entrega(rs.getLong("a.cd_entrega"), dthrInicio, dthrFim, statusEnum,
@@ -106,6 +118,52 @@ public class EntregaDAO extends JdbcDAO<Entrega> {
 
     @Override
     public List<Entrega> listarTodos() {
+
+        try{
+            String sql = "select a.cd_entrega, " +
+                    "a.data_hora_inicio, a.data_hora_fim, a.status, a.endereco, " +
+                    "a.cd_cliente, a.cd_entregador, b.codigo, b.nome, " +
+                    "b.tipoVeiculo, b.carteira, c.codigo, c.nome " +
+                    "from entrega a " +
+                    "inner join entregador b on a.cd_entregador = b.codigo " +
+                    "inner join cliente c on a.cd_cliente = c.codigo ";
+
+            List<Entrega> entregaList = new ArrayList<Entrega>();
+
+            pstm = con.prepareStatement(sql);
+
+            rs = pstm.executeQuery();
+
+            while(rs.next()){
+                TipoVeiculoEnum tipoVeiculoEnum = TipoVeiculoEnum.valueOf(rs.getString("b.tipoVeiculo"));
+                CarteiraEnum carteiraEnum = CarteiraEnum.valueOf(rs.getString("b.carteira"));
+                StatusEnum statusEnum = StatusEnum.valueOf(rs.getString("a.status"));
+                LocalDateTime dthrInicio = null;
+                LocalDateTime dthrFim = null;
+
+                if(rs.getTimestamp("a.data_hora_inicio") != null){
+                    dthrInicio = rs.getTimestamp("a.data_hora_inicio").toLocalDateTime();
+                }
+                if(rs.getTimestamp("a.data_hora_fim") != null){
+                    dthrFim = rs.getTimestamp("a.data_hora_fim").toLocalDateTime();
+                }
+
+                Cliente objCliente = new Cliente(rs.getString("c.nome"), rs.getLong("c.codigo"));
+
+                Entregador objEntregador = new Entregador(rs.getInt("b.codigo"),rs.getString("b.nome"),
+                        tipoVeiculoEnum, carteiraEnum);
+
+                Entrega objEntrega = new Entrega(rs.getLong("a.cd_entrega"), dthrInicio, dthrFim, statusEnum,
+                        objCliente, rs.getString("a.endereco"), objEntregador);
+
+                entregaList.add(objEntrega);
+            }
+
+            return entregaList;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
         return null;
     }
 }

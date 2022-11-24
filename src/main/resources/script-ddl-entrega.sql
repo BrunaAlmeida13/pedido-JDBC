@@ -11,10 +11,9 @@ create table entrega(
 );
 
 select
-       a.data_hora_inicio, a.data_hora_fim, a.status, a.endereco,
-       a.cd_cliente, a.cd_entregador, b.credencial, b.nome,
-       b.tipoVeiculo, b.carteira, c.cliente, c.nome
+    a.cd_entrega, a.data_hora_inicio, a.data_hora_fim, a.status, a.endereco,
+    a.cd_cliente, a.cd_entregador, b.codigo, b.nome, b.tipoVeiculo, b.carteira,
+    c.codigo, c.nome
 from entrega a
-inner join entregador b on a.cd_entregador = b.codigo
-inner join cliente c on a.cd_cliente = c.cliente;
-where cd_entrega = ?;
+    inner join entregador b on a.cd_entregador = b.codigo
+    inner join cliente c on a.cd_cliente = c.codigo where cd_entrega = 3;
