@@ -46,7 +46,7 @@ public class EntregadorDAOTest {
     public void TesteObterEntregador() {
         EntregadorDAO entregadorDao = new EntregadorDAO();
         Entregador entregador = new Entregador(5L);
-        Entregador entregadorResultado = entregadorDao.obterEntregador(entregador.getCodigo());
+        Entregador entregadorResultado = entregadorDao.obter(entregador.getCodigo());
         Assert.assertNotNull(entregadorResultado);
     }
 
