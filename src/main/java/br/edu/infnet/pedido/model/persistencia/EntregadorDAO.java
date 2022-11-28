@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.infnet.pedido.model.entidade.Cliente;
 import br.edu.infnet.pedido.model.entidade.Entregador;
 
 public class EntregadorDAO extends JdbcDAO<Entregador> {
@@ -59,13 +58,9 @@ public class EntregadorDAO extends JdbcDAO<Entregador> {
         return false;
     }
 
-    @Override
-    public Cliente obter(Long codigo) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
-    public Entregador obterEntregador(Long codigo) {
+    @Override
+    public Entregador obter(Long codigo) {
         String sql = "select * from entregador where codigo = ?";
         try {
             pstm = con.prepareStatement(sql);

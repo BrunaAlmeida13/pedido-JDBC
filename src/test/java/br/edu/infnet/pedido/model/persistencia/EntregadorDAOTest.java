@@ -1,8 +1,8 @@
 package br.edu.infnet.pedido.model.persistencia;
 
-import br.edu.infnet.pedido.model.entidade.CarteiraEnum;
 import br.edu.infnet.pedido.model.entidade.Entregador;
-import br.edu.infnet.pedido.model.entidade.TipoVeiculoEnum;
+import br.edu.infnet.pedido.model.entidade.enums.CarteiraEnum;
+import br.edu.infnet.pedido.model.entidade.enums.TipoVeiculoEnum;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +45,7 @@ public class EntregadorDAOTest {
     public void TesteObterEntregador() {
         EntregadorDAO entregadorDao = new EntregadorDAO();
         Entregador entregador = new Entregador(5L);
-        Entregador entregadorResultado = entregadorDao.obterEntregador(entregador.getCodigo());
+        Entregador entregadorResultado = entregadorDao.obter(entregador.getCodigo());
         Assert.assertNotNull(entregadorResultado);
     }
 

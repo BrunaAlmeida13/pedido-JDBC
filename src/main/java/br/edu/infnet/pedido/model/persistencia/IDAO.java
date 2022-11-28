@@ -1,7 +1,5 @@
 package br.edu.infnet.pedido.model.persistencia;
 
-import br.edu.infnet.pedido.model.entidade.Cliente;
-
 import java.util.List;
 
 public interface IDAO<T> {
@@ -12,7 +10,7 @@ public interface IDAO<T> {
 
     Boolean deletar(T obj);
 
-    Cliente obter(Long codigo);
+    T obter(Long codigo);
 
     List<T> listarTodos();
 

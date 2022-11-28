@@ -53,8 +53,7 @@ public class ClienteDAOTest {
     public void testObterCliente() {
         IDAO clienteDAO = new ClienteDAO();
         List<Cliente> lista = clienteDAO.listarTodos();
-        Cliente cliente = clienteDAO.obter(lista.get(0).getCodigo());
+        Cliente cliente = (Cliente) clienteDAO.obter(lista.get(0).getCodigo());
         Assert.assertNotNull(cliente);
     }
-
 }
