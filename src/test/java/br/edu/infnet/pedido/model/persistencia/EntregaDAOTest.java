@@ -18,7 +18,7 @@ public class EntregaDAOTest {
 
         Cliente cliente = new Cliente("Jose das Couves", 1L);
 
-        Entregador entregador = new Entregador(1,"Daniel", TipoVeiculoEnum.CARRO, CarteiraEnum.A);
+        Entregador entregador = new Entregador(1L,"Daniel", TipoVeiculoEnum.CARRO, CarteiraEnum.A);
 
         Entrega entrega = new Entrega(null, LocalDateTime.now(), null, StatusEnum.EM_PROGRESSO,
                                       cliente, "Sobradinho I - Quadra 6, Conjunto 12, Casa 02", entregador);
@@ -34,7 +34,7 @@ public class EntregaDAOTest {
 
         Cliente cliente = new Cliente("Jose das Couves", 1L);
 
-        Entregador entregador = new Entregador(1,"Daniel", TipoVeiculoEnum.CARRO, CarteiraEnum.A);
+        Entregador entregador = new Entregador(1L,"Daniel", TipoVeiculoEnum.CARRO, CarteiraEnum.A);
 
         Entrega entrega = new Entrega(2L, LocalDateTime.now(), LocalDateTime.now().plusDays(5), StatusEnum.EM_PROGRESSO,
                 cliente, "Ceilandia - QMS 33, Conjunto 12, Casa 13", entregador);
@@ -49,7 +49,7 @@ public class EntregaDAOTest {
 
         Cliente cliente = new Cliente("Jose das Couves", 1L);
 
-        Entregador entregador = new Entregador(1,"Daniel", TipoVeiculoEnum.CARRO, CarteiraEnum.A);
+        Entregador entregador = new Entregador(1L,"Daniel", TipoVeiculoEnum.CARRO, CarteiraEnum.A);
 
         Entrega entrega = new Entrega(2L, LocalDateTime.now(), LocalDateTime.now().plusDays(5), StatusEnum.EM_PROGRESSO,
                 cliente, "Ceilandia - QMS 33, Conjunto 12, Casa 13", entregador);
