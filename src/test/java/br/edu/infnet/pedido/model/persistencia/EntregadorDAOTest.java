@@ -1,12 +1,11 @@
 package br.edu.infnet.pedido.model.persistencia;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import br.edu.infnet.pedido.model.entidade.CarteiraEnum;
 import br.edu.infnet.pedido.model.entidade.Entregador;
 import br.edu.infnet.pedido.model.entidade.TipoVeiculoEnum;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.List;
 
@@ -55,5 +54,4 @@ public class EntregadorDAOTest {
         List<Entregador> entregadores = entregadorDAO.listarTodos();
         Assert.assertTrue(entregadores.size() > 0);
     }
-
 }

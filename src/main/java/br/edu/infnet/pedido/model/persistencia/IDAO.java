@@ -1,19 +1,19 @@
 package br.edu.infnet.pedido.model.persistencia;
 
-import java.util.List;
-
 import br.edu.infnet.pedido.model.entidade.Cliente;
+
+import java.util.List;
 
 public interface IDAO<T> {
 
-	Boolean salvar(T obj);
+    Boolean salvar(T obj);
 
-	Boolean atualizar(T obj);
+    Boolean atualizar(T obj);
 
-	Boolean deletar(T obj);
+    Boolean deletar(T obj);
 
-	Cliente obter(Long codigo);
+    Cliente obter(Long codigo);
 
-	List<T> listarTodos();
+    List<T> listarTodos();
 
 }

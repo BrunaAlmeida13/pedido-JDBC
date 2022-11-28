@@ -103,6 +103,4 @@ public class EntregadorDAO extends JdbcDAO<Entregador> {
         }
         return null;
     }
-
-
 }

@@ -1,6 +1,6 @@
 package br.edu.infnet.pedido.model.entidade;
 
 public enum TipoVeiculoEnum {
-		
-	BICICLETA, MOTO, CARRO, VAN;
+
+    BICICLETA, MOTO, CARRO, VAN;
 }

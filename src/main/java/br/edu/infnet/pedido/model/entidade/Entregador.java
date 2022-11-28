@@ -6,7 +6,6 @@ public class Entregador {
     private String nome;
     private TipoVeiculoEnum tipoVeiculo;
     private CarteiraEnum carteira;
-    // private Entrega entrega;
 
     public Entregador() {
 
