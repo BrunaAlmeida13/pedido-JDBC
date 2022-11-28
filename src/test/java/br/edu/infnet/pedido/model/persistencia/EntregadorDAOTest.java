@@ -4,9 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.edu.infnet.pedido.model.entidade.CarteiraEnum;
+import br.edu.infnet.pedido.model.entidade.enums.CarteiraEnum;
 import br.edu.infnet.pedido.model.entidade.Entregador;
-import br.edu.infnet.pedido.model.entidade.TipoVeiculoEnum;
+import br.edu.infnet.pedido.model.entidade.enums.TipoVeiculoEnum;
 
 import java.util.List;
 

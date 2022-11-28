@@ -1,5 +1,8 @@
 package br.edu.infnet.pedido.model.entidade;
 
+import br.edu.infnet.pedido.model.entidade.enums.CarteiraEnum;
+import br.edu.infnet.pedido.model.entidade.enums.TipoVeiculoEnum;
+
 public class Entregador {
 
     private Long codigo;

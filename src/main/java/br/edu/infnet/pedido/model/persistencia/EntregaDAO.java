@@ -1,10 +1,11 @@
 package br.edu.infnet.pedido.model.persistencia;
 
 import br.edu.infnet.pedido.model.entidade.*;
+import br.edu.infnet.pedido.model.entidade.enums.CarteiraEnum;
 import br.edu.infnet.pedido.model.entidade.enums.StatusEnum;
+import br.edu.infnet.pedido.model.entidade.enums.TipoVeiculoEnum;
 
 import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

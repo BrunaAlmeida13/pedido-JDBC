@@ -1,12 +1,13 @@
 package br.edu.infnet.pedido.model.persistencia;
 
 import br.edu.infnet.pedido.model.entidade.*;
+import br.edu.infnet.pedido.model.entidade.enums.CarteiraEnum;
 import br.edu.infnet.pedido.model.entidade.enums.StatusEnum;
+import br.edu.infnet.pedido.model.entidade.enums.TipoVeiculoEnum;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class EntregaDAOTest {
